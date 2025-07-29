@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <title>Προφίλ Εργαζομένου</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <h2>Προφίλ Εργαζομένου</h2>
+  <div id="result">Φόρτωση...</div>
+  <button id="saveBtn" style="display:none;">Αποθήκευση ως Επαφή</button>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    const database = {
+      "123456": {
+        name: "Γιώργος Νικολάου",
+        phone: "+306941234567",
+        position: "Αποθηκάριος",
+        shift: "07:00 - 15:00"
+      }
+    };
+
+    const user = database[id];
+    if (user) {
+      document.getElementById("result").innerHTML = `
+        <p><strong>Όνομα:</strong> ${user.name}</p>
+        <p><strong>Τηλέφωνο:</strong> ${user.phone}</p>
+        <p><strong>Θέση:</strong> ${user.position}</p>
+        <p><strong>Ωράριο:</strong> ${user.shift}</p>
+      `;
+      document.getElementById("saveBtn").style.display = "inline-block";
+    } else {
+      document.getElementById("result").innerText = "Δεν βρέθηκαν στοιχεία.";
+    }
+
+    document.getElementById("saveBtn").addEventListener("click", () => {
+      const vcard =
+`BEGIN:VCARD
+VERSION:3.0
+FN:${user.name}
+TEL;TYPE=CELL:${user.phone}
+TITLE:${user.position}
+NOTE:Ωράριο: ${user.shift}
+END:VCARD`;
+
+      const blob = new Blob([vcard], { type: "text/vcard" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${user.name}.vcf`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
