@@ -8,7 +8,7 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Roboto', sans-serif;
       background-color: #d0e8ff;
     }
 
@@ -32,17 +32,16 @@
       font-size: 20px;
     }
 
-    /* Νέα κλάση για την κυκλική φωτογραφία */
     .profile-photo {
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      object-fit:  cover; 
+      object-fit: contain;
+      background-color: white;
       border: 4px solid white;
       margin: 20px auto 0 auto;
       display: block;
       box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      background-color: white;
     }
 
     .card {
@@ -70,7 +69,7 @@
     .card p strong {
       font-weight: bold;
       font-style: normal;
-      min-width: 100px; /* για να έχουν ίσο πλάτος τα labels */
+      min-width: 100px;
     }
 
     .card p span {
@@ -108,15 +107,18 @@
 
     .social a {
       display: inline-block;
-      margin: 0 10px;
+      margin: 10px 10px;
+      padding: 10px 16px;
+      background-color: #0077cc;
+      color: white;
+      border-radius: 8px;
       text-decoration: none;
-      color: #0077cc;
       font-weight: bold;
       font-size: 16px;
     }
 
     .social a:hover {
-      text-decoration: underline;
+      background-color: #005fa3;
     }
   </style>
 </head>
@@ -124,24 +126,26 @@
   <div class="header">
     <img src="sspc.png" alt="SSPC Logo" class="logo" />
     <h1>Software Solution P.C.</h1>
-
-    <!-- Εδώ βάζεις τη φωτογραφία σου -->
-    <img src="fotomou.jpg" alt="Φωτογραφία Προφίλ" class="profile-photo" />
+    <!-- Κυκλική φωτογραφία -->
+    <img src="photo.jpg" alt="Φωτογραφία Προφίλ" class="profile-photo" />
   </div>
 
   <div class="card">
-    <p><strong>Όνομα:</strong> <span>Αγγελίδης Γεώργιος</span></p>
+    <p><strong>Όνομα:</strong> <span>Αγγελιδης Γεωργιος</span></p>
     <p><strong>Τηλέφωνο:</strong> <span><a href="tel:+306951907712">+30 6951 907712</a></span></p>
     <p><strong>Θέση:</strong> <span>Software Engineer</span></p>
     <p><strong>Ωράριο:</strong> <span>09:00 - 17:00</span></p>
     <p><strong>Email:</strong> <span><a href="mailto:aggelidis@sspc.gr">aggelidis@sspc.gr</a></span></p>
   </div>
 
+  <!-- Χάρτης -->
   <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d100606.47320290284!2d23.707445108188324!3d38.00157335300039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x14a1bd5ab9611973%3A0x96194850f345c053!2sLeof.%20Mesogeion%20196%2C%20Cholargos%20155%2061!3m2!1d38.0016021!2d23.7898461!5e0!3m2!1sen!2sgr!4v1753865743158!5m2!1sen!2sgr" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
+  <!-- Social + vCard κουμπί -->
   <div class="social">
     <a href="https://www.linkedin.com/in/george-angelidis-4a8453308/" target="_blank">🔗 LinkedIn</a>
     <a href="https://www.facebook.com/aggela90/" target="_blank">📘 Facebook</a>
+    <a href="aggelidis.vcf" download>📥 Αποθήκευση Επαφής (vCard)</a>
   </div>
 </body>
 </html>
